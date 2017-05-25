@@ -33,10 +33,10 @@ D2
 - Recursive mode loads D1, D11, D111, D12, D2 (basically if first loads the .git folder with all it's cryptic files)
 - Flat mode loads D1, D2, D11, D12, D111 (this mode is prefered when we explore a file system)
 
-### Consider the toggle of the hidden file
-
+### Toggle the hidden files
 
 See below code from [Michael Herrmann](https://fman.io/contact)
+
 ```
 That is possible. You can get the setting for the current pane via:
 
@@ -51,9 +51,9 @@ show_hidden_files = pane_info['show_hidden_files']
 
 ## Thank you!
 
-I must thank to [Michael Herrmann](https://fman.io/contact) who was extremely responsive and very helpful and enabled me to solve this issue, considering that I'm very much a begginer in python.
+I must thank to [Michael Herrmann](https://fman.io/contact) who was extremely responsive and very helpful and enabled me to solve this issue, considering that I'm very much a beginner in python.
 
 ## Activism
 
-- You my thanks if you take a minute to look into this http://www.stoporganharvesting.org/
+- You have my thanks if you take a minute to look into this http://www.stoporganharvesting.org/
 - Please sign this petition http://www.dafoh.org/petition-to-the-united-nations/
