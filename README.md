@@ -2,7 +2,7 @@
 
 This is a plugin to locate files and folders starting with the current folders in [fman](https://fman.io/).
 
-IMHO this plugin makes [fman](https://fman.io/) an even faster file exploration tool yet. Dare I say even finally even faster then Total Commander? I say this because it has fuzzy search like Sublime and on top of that it works cross platform on Mac, Windows and Linux.
+IMHO this plugin makes [fman](https://fman.io/) an even faster file exploration tool yet. Dare I say finally even faster then Total Commander? I say this because it has fuzzy search like Sublime and on top of that it works cross platform on Mac, Windows and Linux.
 
 PS: If you are looking for these features in a terminal, check this out [fzf](https://github.com/junegunn/fzf)
 
