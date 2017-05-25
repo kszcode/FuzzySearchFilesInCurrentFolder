@@ -1,6 +1,6 @@
 # FuzzySearchFilesInCurrentFolder
 
-Locate files and folders starting with the current folders in [fman](https://fman.io/).
+Plugin to locate files and folders starting with the current folders in [fman](https://fman.io/).
 
 IMHO this plugin makes [fman](https://fman.io/) an even faster file exploration tool yet. Dare I say even finally even faster then Total Commander? I say this because it has fuzzy search like Sublime and on top of that it works cross platform on Mac, Windows and Linux.
 
