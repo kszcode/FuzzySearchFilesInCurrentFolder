@@ -1,8 +1,8 @@
 # FuzzySearchFilesInCurrentFolder
 
-Locate files and folders starting with the current folders in FMAN.
+Locate files and folders starting with the current folders in [fman](https://fman.io/).
 
-IMHO this makes FMAN the best and fastest file exploration tool yet.
+IMHO this makes [fman](https://fman.io/) the best and fastest file exploration tool yet.
 
 ![Fuzzy search files and folders in all subfolders from current folder](https://raw.githubusercontent.com/kszcode/FuzzySearchFilesInCurrentFolder/master/resources/FuzzySearchInSubFolder.png)
 
