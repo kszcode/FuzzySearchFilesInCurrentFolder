@@ -68,5 +68,5 @@ I must thank [Michael Herrmann](https://fman.io/contact) who was extremely respo
 
 ## Activism
 
-- You have my thanks if you take a minute to look into this http://www.stoporganharvesting.org/
-- Please sign this petition http://www.dafoh.org/petition-to-the-united-nations/
+- You have my thanks if you take a minute to sign this petition: http://www.dafoh.org/petition-to-the-united-nations/
+- This is one of the biggest human rights violations of our time, see here: http://www.stoporganharvesting.org/
