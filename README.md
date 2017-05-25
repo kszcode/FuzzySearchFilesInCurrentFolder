@@ -39,7 +39,7 @@ D1
     D12
 D2
 ```
-- Recursive mode loads D1, D11, D111, D12, D2 (basically if first loads the .git folder with all it's cryptic files)
+- Recursive mode loads D1, D11, D111, D12, D2 (basically if first loads the .git folder with all it's cryptic files, you can think of this as a deep first approach which exhaust the file limit very fast)
 - Flat mode loads D1, D2, D11, D12, D111 (this mode is prefered when we explore a file system)
     - This can be achieved by putting all non traversed folders into a list and then cycling through all of them with a while until empty or limit reached loop.
 
