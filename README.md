@@ -4,12 +4,20 @@ Locate files and folders starting with the current folders in FMAN.
 
 IMHO this makes FMAN the best and fastest file exploration tool yet.
 
-
+![Fuzzy search files and folders in all subfolders from current folder](./FuzzySearchFilesInCurrentFolder/resources/FuzzySearchInSubFolder.png)
 
 ## Features
 
 - Search file in current folder: pressing CMD+F or CMD+E will popup the quick search and you can fuzzy find the file or folder you need, pressing enter will place the cursor on it.
 - Search file in current sub folders: pressing SHIFT+CMD+F or SHIFT+CMD+E will popup the quick search and you can fuzzy find the file or folder looking into all the subfolders. For performance reasons only 5000 files are loaded, this is also signaled in the status bar.
+
+## Installation
+
+You can copy the contents of this folder to:
+
+```~/Library/Application Support/fman/Plugins/User/FuzzySearchFilesInCurrentFolder```
+
+Soon probably you will be able to install it via the command pallete: SHIFT+CMD+P > Install Plugin >FuzzySearchFilesInCurrentFolder
 
 ## Further development
 
@@ -51,7 +59,7 @@ show_hidden_files = pane_info['show_hidden_files']
 
 ## Thank you!
 
-I must thank to [Michael Herrmann](https://fman.io/contact) who was extremely responsive and very helpful and enabled me to solve this issue, considering that I'm very much a beginner in python.
+I must thank [Michael Herrmann](https://fman.io/contact) who was extremely responsive and very helpful and enabled me to solve this issue, considering that I'm very much a beginner in python.
 
 ## Activism
 
