@@ -15,11 +15,12 @@ PS: If you are looking for these features in a terminal, check this out [fzf](ht
 
 ## Installation
 
-You can copy the contents of this folder to:
+Go to the command pallete: SHIFT+CMD+P > Install Plugin >FuzzySearchFilesInCurrentFolder
+
+You can also install it manually just copy the contents of this folder to:
 
 ```~/Library/Application Support/fman/Plugins/User/FuzzySearchFilesInCurrentFolder```
 
-Soon probably you will be able to install it via the command pallete: SHIFT+CMD+P > Install Plugin >FuzzySearchFilesInCurrentFolder
 
 ## Further development
 
