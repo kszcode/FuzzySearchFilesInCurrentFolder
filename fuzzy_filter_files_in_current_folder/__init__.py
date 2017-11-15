@@ -3,13 +3,13 @@ from fman import DirectoryPaneCommand, show_quicksearch, QuicksearchItem, show_s
 from os import listdir
 from os.path import join, isdir, dirname
 
+
 class SearchFilesInThisFolder(DirectoryPaneCommand):
     def __call__(self):
         result = show_quicksearch(self._suggest_my_files_and_folders)
         if result:
             query, file_path = result
             self.pane.place_cursor_at(file_path)
-
 
     def _suggest_my_files_and_folders(self, query):
         dir_ = self.pane.get_path()
@@ -20,6 +20,7 @@ class SearchFilesInThisFolder(DirectoryPaneCommand):
             match = contains_chars(file_name.lower(), query.lower())
             if match or not query:
                 yield QuicksearchItem(file_path, file_name, highlight=match)
+
 
 class SearchFilesInSubFolders(DirectoryPaneCommand):
     def __call__(self):
