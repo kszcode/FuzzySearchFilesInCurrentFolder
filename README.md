@@ -6,14 +6,14 @@ This is a plugin to locate with fuzzy search, your files and folders, starting f
 Dare I say finally even faster then Total Commander?
 I say this because it has fuzzy search like Sublime and on top of that it works cross platform on Mac, Windows and Linux.
 
-PS: If you are looking for these features in a terminal, check this out [fzf](https://github.com/junegunn/fzf)
+PS: If you are looking for these features in a terminal, check out [fzf](https://github.com/junegunn/fzf)
 
 ![Fuzzy search files and folders in all subfolders from current folder](https://raw.githubusercontent.com/kszcode/FuzzySearchFilesInCurrentFolder/master/resources/FuzzySearchInSubFolder.png)
 
 ## Features
 
-- Search file in current folder: pressing CMD+F or CMD+E will popup the quick search and you can fuzzy find the file or folder you need, pressing enter will place the cursor on it.
-- Search file in current sub folders: pressing SHIFT+CMD+F or SHIFT+CMD+E will popup the quick search and you can fuzzy find the file or folder looking into all the subfolders. For performance reasons only 5000 files are loaded, this is also signaled in the status bar.
+- Search file in current folder: pressing CMD+F, CMD+E or CTRL-F will popup the quick search and you can fuzzy find the file or folder you need, pressing enter will place the cursor on it.
+- Search file in current sub folders: pressing SHIFT+CMD+F or SHIFT+CTRL+F  will popup the quick search and you can fuzzy find the file or folder looking into all the subfolders. For performance reasons only 5000 files are loaded, this is also signaled in the status bar.
 
 ## Installation
 
