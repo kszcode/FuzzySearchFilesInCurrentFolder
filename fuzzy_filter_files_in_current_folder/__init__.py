@@ -5,7 +5,6 @@ from os.path import join, isdir, dirname
 
 class SearchFilesInThisFolder(DirectoryPaneCommand):
     def __call__(self):
-        show_status_message('simple SearchFilesInThisFolder called')
         result = show_quicksearch(self._suggest_my_files_and_folders)
         if result:
             query, file_path = result
@@ -42,7 +41,7 @@ class SearchFilesInSubFolders(DirectoryPaneCommand):
         is_full_message = "reached load limit"
         if self.limit_file_count > 0:
             is_full_message = ''
-        show_status_message('folders/file found: ' + str(self.folders_found) + '/' + str(self.files_found) + ' ' + is_full_message, 5)
+        # show_status_message('folders/files found: ' + str(self.folders_found) + '/' + str(self.files_found) + ' ' + is_full_message, 5)
         return lst_search_items
 
     def load_files_for_dir(self, query, parse_dir, base_path):
@@ -65,4 +64,3 @@ class SearchFilesInSubFolders(DirectoryPaneCommand):
                 if self.limit_file_count > 0:
                     lst_search_items += self.load_files_for_dir(query, file_path, new_base_path)
         return lst_search_items
-
