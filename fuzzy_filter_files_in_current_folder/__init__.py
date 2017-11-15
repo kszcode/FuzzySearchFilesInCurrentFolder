@@ -35,14 +35,16 @@ class SearchFilesInSubFolders(DirectoryPaneCommand):
             self.pane.place_cursor_at(file_path)
 
     def _suggest_my_subfolders_and_files(self, query):
-        self.limit_file_count = 5000
+        self.limit_file_count = 10000
         self.folders_found = 0
         self.files_found = 0
         lst_search_items = self.load_files_for_dir(query, self.current_dir, '')
-        is_full_message = "reached load limit"
-        if self.limit_file_count > 0:
-            is_full_message = ''
-        # show_status_message('folders/files found: ' + str(self.folders_found) + '/' + str(self.files_found) + ' ' + is_full_message, 5)
+
+        # show status message only when limit is reached
+        if self.limit_file_count <= 0:
+            is_full_message = "reached load limit"
+            show_status_message('folders/files found: ' + str(self.folders_found) + '/' + str(self.files_found) + ' ' + is_full_message, 5)
+
         return lst_search_items
 
     def load_files_for_dir(self, query, parse_dir, base_path):
@@ -54,14 +56,18 @@ class SearchFilesInSubFolders(DirectoryPaneCommand):
             # show_status_message("_suggest_my_subfolders_and_files: " + file_path)
             file_name_clean = file_name
             file_name = join(base_path, file_name)
+
             if isdir(file_path):
                 self.folders_found += 1
                 file_name = '[' + file_name + ']'
             match = contains_chars(file_name.lower(), query.lower())
+
             if match or not query:
                 lst_search_items.append(QuicksearchItem(file_path, file_name, highlight=match))
+
             if isdir(file_path):
                 new_base_path = join(base_path, file_name_clean)
                 if self.limit_file_count > 0:
                     lst_search_items += self.load_files_for_dir(query, file_path, new_base_path)
+
         return lst_search_items
