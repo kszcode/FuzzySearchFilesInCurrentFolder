@@ -35,15 +35,17 @@ class SearchFilesInSubFolders(DirectoryPaneCommand):
             self.pane.place_cursor_at(file_path)
 
     def _suggest_my_subfolders_and_files(self, query):
-        self.limit_file_count = 10000
+        self.limit_file_count = 13000
         self.folders_found = 0
         self.files_found = 0
         lst_search_items = self.load_files_for_dir(query, self.current_dir, '')
 
         # show status message only when limit is reached
+        is_full_message = ''
         if self.limit_file_count <= 0:
             is_full_message = "reached load limit"
-            show_status_message('folders/files found: ' + str(self.folders_found) + '/' + str(self.files_found) + ' ' + is_full_message, 5)
+
+        show_status_message('folders/files found: ' + str(self.folders_found) + '/' + str(self.files_found) + ' ' + is_full_message, 5)
 
         return lst_search_items
 
