@@ -12,8 +12,8 @@ PS: If you are looking for these features in a terminal, check out [fzf](https:/
 
 ## Features
 
-- Search file in current folder: pressing CMD+F, CMD+E or CTRL-F will popup the quick search and you can fuzzy find the file or folder you need, pressing enter will place the cursor on it.
-- Search file in current sub folders: pressing SHIFT+CMD+F or SHIFT+CTRL+F  will popup the quick search and you can fuzzy find the file or folder looking into all the subfolders. For performance reasons only 5000 files are loaded, this is also signaled in the status bar.
+- Search file in current folder: pressing CMD+F, CMD+E or CTRL+F will popup the quick search and you can fuzzy find the file or folder you need, pressing enter will place the cursor on it.
+- Search file in current sub folders: pressing SHIFT+CMD+F or SHIFT+CTRL+F  will popup the quick search and you can fuzzy find the file or folder looking into all the subfolders. For performance reasons only 13000 files are loaded, this is also signaled in the status bar.
 
 ## Installation
 
@@ -53,6 +53,7 @@ D2
 
 Pull requests are welcome :)
 
+PS: This feature is not as important anymore because fman allows something similar to this out of the box. When you use GoTo pallete (CMD/CTRL+P) now you are able to advance to the subfolder using fuzzy search to select the next subfolder.
 
 ### Toggle the hidden files
 
