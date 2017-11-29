@@ -5,16 +5,35 @@ from os.path import join, isdir, dirname
 
 
 class SearchFilesInThisFolder(DirectoryPaneCommand):
+    """ This is being called on search_files_in_this_folder action method """
+
+    file_prefix = ""
+
     def __call__(self):
+        """ handle quick search call """
         result = show_quicksearch(self._suggest_my_files_and_folders)
         if result:
             query, file_path = result
-            self.pane.place_cursor_at(file_path)
+            # show_alert('file://' + file_path)
+            # current_path = self.normalize_path_name(self.pane.get_path())
+            # relative_path = file_path[len(current_path) + 1:]
+            # show_alert(current_path)
+            # show_alert(relative_path)
+            self.pane.place_cursor_at(self.file_prefix + file_path)
+
+    def normalize_path_name(self, path):
+        if path.startswith('file://'):
+            path = path[len('file://'):]
+            self.file_prefix = 'file://'
+        return path
 
     def _suggest_my_files_and_folders(self, query):
-        dir_ = self.pane.get_path()
-        for file_name in listdir(dir_):
-            file_path = join(dir_, file_name)
+        dir_path = self.pane.get_path()
+        dir_path = self.normalize_path_name(dir_path)
+        list_directory_content = listdir(dir_path)
+        list_directory_content = sorted(list_directory_content, key=lambda s: s.lower())
+        for file_name in list_directory_content:
+            file_path = join(dir_path, file_name)
             if isdir(file_path):
                 file_name = '[' + file_name + ']'
             match = contains_chars(file_name.lower(), query.lower())
@@ -23,6 +42,10 @@ class SearchFilesInThisFolder(DirectoryPaneCommand):
 
 
 class SearchFilesInSubFolders(DirectoryPaneCommand):
+    """ Search for all files in all sub-folders recursively until FILE_COUNT_LIMIT is reached """
+    file_prefix = ""
+    FILE_COUNT_LIMIT = 13000;
+
     def __call__(self):
         self.current_dir = self.pane.get_path()
         result = show_quicksearch(self._suggest_my_subfolders_and_files)
@@ -31,21 +54,29 @@ class SearchFilesInSubFolders(DirectoryPaneCommand):
             new_path = dirname(file_path)
             # show_alert(new_path)
             # show_alert('path: ' + new_path + ' file_path: ' + file_path)
-            self.pane.set_path(new_path)
-            self.pane.place_cursor_at(file_path)
+            self.pane.set_path(self.file_prefix + new_path)
+            self.pane.place_cursor_at(self.file_prefix + file_path)
+
+    def normalize_path_name(self, path):
+        if path.startswith('file://'):
+            path = path[len('file://'):]
+            self.file_prefix = 'file://'
+        return path
 
     def _suggest_my_subfolders_and_files(self, query):
-        self.limit_file_count = 13000
+        self.limit_file_count = self.FILE_COUNT_LIMIT
         self.folders_found = 0
         self.files_found = 0
-        lst_search_items = self.load_files_for_dir(query, self.current_dir, '')
+        current_folder = self.normalize_path_name(self.current_dir)
+        lst_search_items = self.load_files_for_dir(query, current_folder, '')
 
         # show status message only when limit is reached
         is_full_message = ''
         if self.limit_file_count <= 0:
             is_full_message = "reached load limit"
 
-        show_status_message('folders/files found: ' + str(self.folders_found) + '/' + str(self.files_found) + ' ' + is_full_message, 5)
+        show_status_message(
+            'folders/files found: ' + str(self.folders_found) + '/' + str(self.files_found) + ' ' + is_full_message, 5)
 
         return lst_search_items
 
