@@ -1,5 +1,6 @@
 from core.quicksearch_matchers import contains_chars
 from fman import DirectoryPaneCommand, show_quicksearch, QuicksearchItem, show_status_message, show_alert
+from fman.url import as_url
 from os import listdir
 from os.path import join, isdir, dirname
 
@@ -54,9 +55,10 @@ class SearchFilesInSubFolders(DirectoryPaneCommand):
             new_path = dirname(file_path)
             # show_alert(new_path)
             # show_alert('path: ' + new_path + ' file_path: ' + file_path)
-            self.pane.set_path(self.file_prefix + new_path)
-            self.pane.place_cursor_at(self.file_prefix + file_path)
-
+            def cursor_at():
+              self.pane.place_cursor_at(as_url(file_path))
+            self.pane.set_path(self.file_prefix + new_path, callback=cursor_at)
+            
     def normalize_path_name(self, path):
         if path.startswith('file://'):
             path = path[len('file://'):]
