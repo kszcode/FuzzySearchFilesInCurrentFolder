@@ -1,5 +1,6 @@
 from core.quicksearch_matchers import contains_chars
 from fman import DirectoryPaneCommand, show_quicksearch, QuicksearchItem, show_status_message, show_alert
+from fman.url import as_human_readable, as_url
 from os import listdir
 from os.path import join, isdir, dirname
 
@@ -14,22 +15,10 @@ class SearchFilesInThisFolder(DirectoryPaneCommand):
         result = show_quicksearch(self._suggest_my_files_and_folders)
         if result:
             query, file_path = result
-            # show_alert('file://' + file_path)
-            # current_path = self.normalize_path_name(self.pane.get_path())
-            # relative_path = file_path[len(current_path) + 1:]
-            # show_alert(current_path)
-            # show_alert(relative_path)
-            self.pane.place_cursor_at(self.file_prefix + file_path)
-
-    def normalize_path_name(self, path):
-        if path.startswith('file://'):
-            path = path[len('file://'):]
-            self.file_prefix = 'file://'
-        return path
+            self.pane.place_cursor_at(as_url(file_path))
 
     def _suggest_my_files_and_folders(self, query):
-        dir_path = self.pane.get_path()
-        dir_path = self.normalize_path_name(dir_path)
+        dir_path = as_human_readable(self.pane.get_path())
         list_directory_content = listdir(dir_path)
         list_directory_content = sorted(list_directory_content, key=lambda s: s.lower())
         for file_name in list_directory_content:
@@ -52,22 +41,14 @@ class SearchFilesInSubFolders(DirectoryPaneCommand):
         if result:
             query, file_path = result
             new_path = dirname(file_path)
-            # show_alert(new_path)
-            # show_alert('path: ' + new_path + ' file_path: ' + file_path)
-            self.pane.set_path(self.file_prefix + new_path)
-            self.pane.place_cursor_at(self.file_prefix + file_path)
-
-    def normalize_path_name(self, path):
-        if path.startswith('file://'):
-            path = path[len('file://'):]
-            self.file_prefix = 'file://'
-        return path
-
+            thePane = self.pane
+            self.pane.set_path(as_url(new_path), lambda: thePane.place_cursor_at(as_url(file_path)))
+            
     def _suggest_my_subfolders_and_files(self, query):
         self.limit_file_count = self.FILE_COUNT_LIMIT
         self.folders_found = 0
         self.files_found = 0
-        current_folder = self.normalize_path_name(self.current_dir)
+        current_folder = as_human_readable(self.current_dir)
         lst_search_items = self.load_files_for_dir(query, current_folder, '')
 
         # show status message only when limit is reached
@@ -104,3 +85,5 @@ class SearchFilesInSubFolders(DirectoryPaneCommand):
                     lst_search_items += self.load_files_for_dir(query, file_path, new_base_path)
 
         return lst_search_items
+
+
