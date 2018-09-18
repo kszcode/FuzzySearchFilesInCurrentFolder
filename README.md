@@ -1,5 +1,7 @@
 # FuzzySearchFilesInCurrentFolder
 
+> Update: as of version 1.3.1 of FMAN you can achieve a similar effect natively by typing `*substring1*substring2`, see [article](https://fman.io/blog/filter-files-as-you-type/)
+
 This is a plugin to locate with fuzzy search, your files and folders, starting from the current folder in [fman](https://fman.io/).
 
 [fman](https://fman.io/) is the fastest file exploration tool that I've seen yet.
